@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "book-app-b59d9": {
+      "hosting": {
+        "BookApp": [
+          "book-app-b59d9"
+        ]
+      }
+    }
+  }
+}
