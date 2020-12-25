@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'; 
 import { SnackService } from '../services/snack.service';
 
 @Injectable({
@@ -23,9 +22,4 @@ export class AuthGuard implements CanActivate {
       }
       return isLoggedin;
   }
-
-
-
-
-
 }
