@@ -4,42 +4,47 @@
 @import '../node_modules/font-awesome/scss/font-awesome';
 
 body {
-    padding: 0;
-    margin: 0;
-    font-family: Roboto, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto, sans-serif;
 }
 
 .container {
-    margin: 20px;
-    display:flex;
+  margin: 20px;
+  display: flex;
 }
 
 $lt-gray: #ddd;
-$background-dark: #512DA8;
+$background-dark: #3e3d41;
 $background-light: #9575CD;
 $background-pale: #D1C4E9;
-$primary-color-dark:   #512DA8;
-$primary-color:        #673AB7;
-$primary-color-light:  #D1C4E9;
-$primary-color-text:   #FFFFFF;
-$accent-color:         #FFC107;
-$primary-text-color:   #212121;
+$primary-color-dark: #34816e;
+$primary-color: #FF7A32;
+$primary-color-light: #D1C4E9;
+$primary-color-text: #FFFFFF;
+$accent-color: #FFB289;
+$primary-text-color: #212121;
 $secondary-text-color: #757575;
-$divider-color:        #BDBDBD;
+$divider-color: #BDBDBD;
 
 @mixin zero-margin($pad-up-down, $pad-left-right) {
-    margin: 0px auto;
-    padding: $pad-up-down $pad-left-right;
+  margin: 0px auto;
+  padding: $pad-up-down $pad-left-right;
 }
 
 .background-primary {
-    background-color: $background-dark!important;
-  }
+  background-image: url("assets/img/Background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
 .background-accent {
-    background-color: $accent-color!important;
-  }
+  background-color: $accent-color !important;
+}
+
 .text-floral-white {
-    color: floralwhite!important;
+  color: floralwhite !important;
 }
 
 .flex-spacer {
@@ -47,8 +52,9 @@ $divider-color:        #BDBDBD;
 }
 
 $background-moredark: #4527A0;
+
 .active {
-    background: $background-moredark;
+  background: $background-moredark;
 }
 
 .highlight {
@@ -56,4 +62,22 @@ $background-moredark: #4527A0;
   border: 1px solid $primary-color-dark;
   z-index: 1;
   transform: scale(1.01);
+}
+
+.toolbar {
+  background-image: url("assets/img/toolbar.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card {
+  background-image: url("assets/img/card.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+  transition: all .2s ease-in-out;
+	transition-duration: 0.5s;
+}
+
+.card:hover{
+  transform: scale(1.1);
 }

@@ -1,18 +1,36 @@
-<mat-toolbar color="primary">
-    <span>Add a Book</span>
+<mat-toolbar class="toolbar">
+
     <span>
-        <button mat-stroked-button (click)="openBookDialog()">
+        <span class="h1">
+            <img src="../../assets/img/book.png" height=30 width=41> BookApp
+        </span>
+        <button mat-button (click)="openBookDialog()">
             <mat-icon>add</mat-icon>
+            <span>Add a Book</span>
+        </button>
+        <button mat-button (click)="sortByTitle()">
+            <mat-icon>sort</mat-icon>
+            <span>Sort by Title</span>
+        </button>
+        <button mat-button (click)="sortByAuthor()">
+            <mat-icon>sort</mat-icon>
+            <span>Sort by Author</span>
+        </button>
+        <button mat-button (click)="sortByDate()">
+            <mat-icon>sort</mat-icon>
+            <span>Sort by Date</span>
         </button>
     </span>
     <span class="flex-spacer"></span>
     <a mat-button (click)="signOut()"><span class="fa fa-sign-in fa-lg"></span> Sign Out</a>
 </mat-toolbar>
-<div class="main-div">
-    <div class="wrapper" fxLayout="grid" fxLayoutGap="10px">
 
+<div class="main-div background-primary">
+
+
+    <div class="wrapper" fxLayout="grid" fxLayoutGap="10px">
         <div class="container" fxFlex *ngIf="books" cols="2" fxLayoutGap="20px">
-            <mat-card fxFlex fxLayoutGap="10px" class="example-card" *ngFor="let book of books">
+            <mat-card fxFlex fxLayoutGap="10px" class="example-card card" *ngFor="let book of books">
                 <mat-card-title>
                     <span> {{book.title}} </span>
                 </mat-card-title>
@@ -26,9 +44,17 @@
                     <p>
                         <span> {{book.date | date}} </span>
                     </p>
+
+                    <div class="icon">
+                        <span>
+                            <i class="fa fa-edit text-primary" (click)="openUpdateBookDialog(book)"></i>
+                            <i class="fa fa-trash text-danger" (click)="deleteBook(book.id)"></i>
+                        </span>
+                    </div>
+
                 </mat-card-content>
                 <mat-card-footer>
-                    <button mat-stroked-button (click)="onClickDelete(book.title)">Delete</button>
+
                 </mat-card-footer>
             </mat-card>
         </div>
