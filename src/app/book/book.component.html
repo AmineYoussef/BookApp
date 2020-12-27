@@ -16,10 +16,6 @@
             <mat-icon>sort</mat-icon>
             <span>Sort by Author</span>
         </button>
-        <button mat-button (click)="sortByDate()">
-            <mat-icon>sort</mat-icon>
-            <span>Sort by Date</span>
-        </button>
     </span>
     <span class="flex-spacer"></span>
     <a mat-button (click)="signOut()"><span class="fa fa-sign-in fa-lg"></span> Sign Out</a>
@@ -45,16 +41,16 @@
                         <span> {{book.date | date}} </span>
                     </p>
 
+                    
+
+                </mat-card-content>
+                <mat-card-footer>
                     <div class="icon">
                         <span>
                             <i class="fa fa-edit text-primary" (click)="openUpdateBookDialog(book)"></i>
                             <i class="fa fa-trash text-danger" (click)="deleteBook(book.id)"></i>
                         </span>
                     </div>
-
-                </mat-card-content>
-                <mat-card-footer>
-
                 </mat-card-footer>
             </mat-card>
         </div>

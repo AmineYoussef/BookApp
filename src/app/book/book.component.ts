@@ -16,7 +16,7 @@ import { expand, flyInOut } from '../animations/app.animation';
   host: {
     '[@flyInOut]': 'true',
     'style': 'display: block;'
-    },
+  },
   animations: [
     flyInOut(),
     expand()
@@ -35,8 +35,10 @@ export class BookComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscription = this.bookService.getUserBooks().subscribe(books => (this.books = books));
+    this.user=this.afAuth.currentUser;
     console.log(this.books);
   }
+
 
   openBookDialog(): void {
     const dialogRef = this.dialog.open(BookDialogComponent, {
@@ -46,7 +48,11 @@ export class BookComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async result => {
       if (result) {
         console.log(result)
-        var splitTags = result.tags.split(" ");
+        if (result != "") {
+          var splitTags = result.tags.split(" ");
+        } else {
+          splitTags = [];
+        }
 
         const user = await this.afAuth.currentUser;
         var currDate = new Date();
@@ -55,6 +61,7 @@ export class BookComponent implements OnInit {
         addedBook = result;
         addedBook.date = currDate.toISOString();
         addedBook.uid = user.uid;
+        addedBook.tags = splitTags;
 
         this.bookService.createBook(addedBook);
       }
@@ -73,8 +80,11 @@ export class BookComponent implements OnInit {
     dialogRef.afterClosed().subscribe(async result => {
       if (result) {
         console.log(result)
-        var splitTags = result.tags.split(" ");
-
+        if (result != "") {
+          var splitTags = result.tags.split(" ");
+        } else {
+          splitTags = [];
+        }
         const user = await this.afAuth.currentUser;
         var currDate = new Date();
         var addedBook: Book;
@@ -82,6 +92,7 @@ export class BookComponent implements OnInit {
         addedBook = result;
         addedBook.date = currDate.toISOString();
         addedBook.uid = user.uid;
+        addedBook.tags = splitTags;
 
         this.bookService.updateBook(book.id, addedBook);
       }
@@ -99,15 +110,11 @@ export class BookComponent implements OnInit {
   }
 
   sortByTitle(): Book[] {
-    return this.books.sort((a,b) => a.title.localeCompare(b.title));
+    return this.books.sort((a, b) => a.title.localeCompare(b.title));
   }
 
   sortByAuthor(): Book[] {
-    return this.books.sort((a,b) => a.author.localeCompare(b.author));
-  }
-  
-  sortByDate(): Book[] {
-    return this.books.sort((a,b) => a.date.localeCompare(b.date));
+    return this.books.sort((a, b) => a.author.localeCompare(b.author));
   }
 
 

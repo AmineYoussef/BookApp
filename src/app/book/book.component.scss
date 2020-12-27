@@ -1,6 +1,23 @@
 .example-card {
   justify-content: center;
   padding: 40px;
+
+  .icon {
+    display: none;
+  }
+
+  &:hover {
+    .icon {
+      top: 35%;
+      right: 5%;
+      display: block;
+
+      i {
+        padding: 0 5px;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 .main-div {
@@ -14,10 +31,10 @@
   align-self: center;
 }
 
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .wrapper {
